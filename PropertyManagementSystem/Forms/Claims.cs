@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
@@ -49,7 +51,7 @@ namespace PropertyManagementSystem.Forms
             txtMethod.Text = contract.Method.ToString();
             txtPaymentDate.Text = contract.PayDate.ToShortDateString();
 
-            btnPrint.Enabled = true;
+            btnPrint.Enabled = btnPayed.Enabled = btnBrowse.Enabled = btnScan.Enabled = pbClaimDoc.Enabled =  true;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -102,7 +104,7 @@ namespace PropertyManagementSystem.Forms
                 var textPropertyType = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyType"];
                 var textPropertyName = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyName"];
                 var textPropertyType2 = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyType2"];
-                var textPropertyName2 = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyName2"];
+                var textPropertyName2 = (TextObject)rpt.ReportDefinition.ReportObjects["textProperty2"];
                 var textPrice = (TextObject)rpt.ReportDefinition.ReportObjects["textPrice"];
                 var textFrom = (TextObject)rpt.ReportDefinition.ReportObjects["textFrom"];
                 var textTo = (TextObject)rpt.ReportDefinition.ReportObjects["textTo"];
@@ -117,6 +119,78 @@ namespace PropertyManagementSystem.Forms
                 textTo.Text = DateTime.Parse(txtPaymentDate.Text).AddDays(5).ToShortDateString();
                 rpt.PrintToPrinter(1, true, 0, 0);
             }
+        }
+
+        private void btnPayed_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return;
+            var contractId = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            var contract = _db.Contracts.Find(contractId);
+            contract.PayStatus = "Payed";
+            contract.ClaimDocument = ImageToByteArray(pbClaimDoc.Image);
+            contract.PayDate = contract.Period == PaymentPeriod.Day
+                ? contract.PayDate.AddDays(contract.PayEvery)
+                :
+                contract.Period == PaymentPeriod.Week
+                    ? contract.PayDate.AddDays(contract.PayEvery * 7)
+                    :
+                    contract.Period == PaymentPeriod.Month
+                        ?
+                        contract.PayDate.AddMonths(int.Parse(contract.PayEvery.ToString(CultureInfo.InvariantCulture)))
+                        : contract.PayDate.AddYears(int.Parse(contract.PayEvery.ToString(CultureInfo.InvariantCulture)));
+            _db.SaveChanges();
+            MessageBox.Show(@"Payment Registered Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Populate();
+            Clear();
+            DisableAll();
+        }
+
+        private void DisableAll()
+        {
+            pbClaimDoc.Enabled = btnBrowse.Enabled = btnScan.Enabled = txtClient.Enabled = txtProperty.Enabled =
+                txtPrice.Enabled = txtPayEvery.Enabled = txtMethod.Enabled =
+                    txtPaymentDate.Enabled = btnPrint.Enabled = btnPayed.Enabled = false;
+        }
+
+        private void Clear()
+        {
+            txtPayEvery.Text = txtClient.Text =
+                txtProperty.Text = txtPrice.Text = txtMethod.Text = txtPaymentDate.Text = "";
+            pbClaimDoc.Image = null;
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                openFileDialog1.Multiselect = false;
+                openFileDialog1.ShowDialog();
+                pbClaimDoc.Image = Image.FromFile(openFileDialog1.FileName);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        public static byte[] ImageToByteArray(Image imageIn)
+        {
+            var ms = new MemoryStream();
+            try
+            {
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            return ms.ToArray();
+        }
+
+        private void pbClaimDoc_DoubleClick(object sender, EventArgs e)
+        {
+            new ViewDocument(pbClaimDoc.Image).ShowDialog();
         }
     }
 }

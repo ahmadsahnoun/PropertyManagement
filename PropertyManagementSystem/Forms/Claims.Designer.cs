@@ -57,9 +57,15 @@
             this.btnCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txtSearch = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnScan = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnBrowse = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pbClaimDoc = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClaimDoc)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -67,7 +73,7 @@
             this.pictureBox1.BackgroundImage = global::PropertyManagementSystem.Properties.Resources.Close;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(680, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(1012, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 15);
@@ -80,7 +86,7 @@
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Monotype Corsiva", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
-            this.lblFullName.Location = new System.Drawing.Point(304, 9);
+            this.lblFullName.Location = new System.Drawing.Point(450, 11);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(144, 24);
             this.lblFullName.TabIndex = 277;
@@ -385,7 +391,7 @@
             this.btnPrint.IconVisible = true;
             this.btnPrint.IconZoom = 50D;
             this.btnPrint.IsTab = false;
-            this.btnPrint.Location = new System.Drawing.Point(121, 500);
+            this.btnPrint.Location = new System.Drawing.Point(157, 500);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
@@ -424,7 +430,7 @@
             this.btnPayed.IconVisible = true;
             this.btnPayed.IconZoom = 50D;
             this.btnPayed.IsTab = false;
-            this.btnPayed.Location = new System.Drawing.Point(284, 500);
+            this.btnPayed.Location = new System.Drawing.Point(440, 500);
             this.btnPayed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPayed.Name = "btnPayed";
             this.btnPayed.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
@@ -438,6 +444,7 @@
             this.btnPayed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnPayed.Textcolor = System.Drawing.Color.White;
             this.btnPayed.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayed.Click += new System.EventHandler(this.btnPayed_Click);
             // 
             // btnCancel
             // 
@@ -461,7 +468,7 @@
             this.btnCancel.IconVisible = true;
             this.btnCancel.IconZoom = 50D;
             this.btnCancel.IsTab = false;
-            this.btnCancel.Location = new System.Drawing.Point(474, 500);
+            this.btnCancel.Location = new System.Drawing.Point(750, 500);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
@@ -507,6 +514,108 @@
             this.label9.Text = "Search";
             this.label9.Visible = false;
             // 
+            // btnScan
+            // 
+            this.btnScan.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnScan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScan.BorderRadius = 7;
+            this.btnScan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnScan.ButtonText = "Scan";
+            this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnScan.DisabledColor = System.Drawing.Color.Gray;
+            this.btnScan.Enabled = false;
+            this.btnScan.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnScan.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnScan.Iconimage")));
+            this.btnScan.Iconimage_right = null;
+            this.btnScan.Iconimage_right_Selected = null;
+            this.btnScan.Iconimage_Selected = null;
+            this.btnScan.IconMarginLeft = 0;
+            this.btnScan.IconMarginRight = 0;
+            this.btnScan.IconRightVisible = true;
+            this.btnScan.IconRightZoom = 0D;
+            this.btnScan.IconVisible = true;
+            this.btnScan.IconZoom = 50D;
+            this.btnScan.IsTab = false;
+            this.btnScan.Location = new System.Drawing.Point(935, 186);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnScan.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnScan.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnScan.selected = false;
+            this.btnScan.Size = new System.Drawing.Size(90, 29);
+            this.btnScan.TabIndex = 322;
+            this.btnScan.Text = "Scan";
+            this.btnScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnScan.Textcolor = System.Drawing.Color.White;
+            this.btnScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnBrowse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBrowse.BorderRadius = 7;
+            this.btnBrowse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnBrowse.ButtonText = "Browse";
+            this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrowse.DisabledColor = System.Drawing.Color.Gray;
+            this.btnBrowse.Enabled = false;
+            this.btnBrowse.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnBrowse.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnBrowse.Iconimage")));
+            this.btnBrowse.Iconimage_right = null;
+            this.btnBrowse.Iconimage_right_Selected = null;
+            this.btnBrowse.Iconimage_Selected = null;
+            this.btnBrowse.IconMarginLeft = 0;
+            this.btnBrowse.IconMarginRight = 0;
+            this.btnBrowse.IconRightVisible = true;
+            this.btnBrowse.IconRightZoom = 0D;
+            this.btnBrowse.IconVisible = true;
+            this.btnBrowse.IconZoom = 50D;
+            this.btnBrowse.IsTab = false;
+            this.btnBrowse.Location = new System.Drawing.Point(935, 147);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnBrowse.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnBrowse.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnBrowse.selected = false;
+            this.btnBrowse.Size = new System.Drawing.Size(90, 29);
+            this.btnBrowse.TabIndex = 321;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnBrowse.Textcolor = System.Drawing.Color.White;
+            this.btnBrowse.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.Location = new System.Drawing.Point(774, 88);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 17);
+            this.label8.TabIndex = 320;
+            this.label8.Text = "Company Logo";
+            // 
+            // pbClaimDoc
+            // 
+            this.pbClaimDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbClaimDoc.Location = new System.Drawing.Point(715, 110);
+            this.pbClaimDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClaimDoc.Name = "pbClaimDoc";
+            this.pbClaimDoc.Size = new System.Drawing.Size(214, 187);
+            this.pbClaimDoc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClaimDoc.TabIndex = 319;
+            this.pbClaimDoc.TabStop = false;
+            this.pbClaimDoc.DoubleClick += new System.EventHandler(this.pbClaimDoc_DoubleClick);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Claims
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,7 +623,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::PropertyManagementSystem.Properties.Resources.Border;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(704, 573);
+            this.ClientSize = new System.Drawing.Size(1039, 573);
+            this.Controls.Add(this.btnScan);
+            this.Controls.Add(this.btnBrowse);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.pbClaimDoc);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnCancel);
@@ -547,6 +660,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClaimDoc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,5 +696,10 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnCancel;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtSearch;
         private System.Windows.Forms.Label label9;
+        private Bunifu.Framework.UI.BunifuFlatButton btnScan;
+        private Bunifu.Framework.UI.BunifuFlatButton btnBrowse;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pbClaimDoc;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

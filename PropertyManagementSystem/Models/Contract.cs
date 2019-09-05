@@ -18,6 +18,7 @@ namespace PropertyManagementSystem.Models
         public PaymentPeriod Period { get; set; }
         public DateTime PayDate { get; set; }
         public string PayStatus { get; set; }
+        public byte[] ClaimDocument { get; set; }
     }
 
     internal enum PaymentPeriod
