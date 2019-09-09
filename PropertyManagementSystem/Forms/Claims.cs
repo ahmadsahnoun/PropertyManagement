@@ -128,7 +128,7 @@ namespace PropertyManagementSystem.Forms
             var contract = _db.Contracts.Find(contractId);
             contract.PayStatus = "Payed";
             contract.ClaimDocument = ImageToByteArray(pbClaimDoc.Image);
-            contract.PayDate = contract.Period == PaymentPeriod.Day
+            var payDate = contract.Period == PaymentPeriod.Day
                 ? contract.PayDate.AddDays(contract.PayEvery)
                 :
                 contract.Period == PaymentPeriod.Week
@@ -138,6 +138,22 @@ namespace PropertyManagementSystem.Forms
                         ?
                         contract.PayDate.AddMonths(int.Parse(contract.PayEvery.ToString(CultureInfo.InvariantCulture)))
                         : contract.PayDate.AddYears(int.Parse(contract.PayEvery.ToString(CultureInfo.InvariantCulture)));
+            if (contract.End > payDate)
+                contract.PayDate = payDate;
+            else
+            {
+                var property = _db.Properties.Find(contract.PropertyId);
+                property.Status = PropertyStatus.Free;
+                _db.SaveChanges();
+            }
+            _db.SaveChanges();
+            var payment = new Payment()
+            {
+                ContractId = contract.Id,
+                PayedAmount = contract.Price,
+                PaymentDate = DateTime.Now
+            };
+            _db.Payments.Add(payment);
             _db.SaveChanges();
             MessageBox.Show(@"Payment Registered Successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Populate();

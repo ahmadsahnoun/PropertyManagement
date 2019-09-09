@@ -229,6 +229,7 @@
             this.btnLogoScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnLogoScan.Textcolor = System.Drawing.Color.White;
             this.btnLogoScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogoScan.Click += new System.EventHandler(this.btnLogoScan_Click);
             // 
             // btnLogoBrowse
             // 

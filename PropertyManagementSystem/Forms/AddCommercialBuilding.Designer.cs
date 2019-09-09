@@ -597,6 +597,7 @@
             this.btnDrawingScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnDrawingScan.Textcolor = System.Drawing.Color.White;
             this.btnDrawingScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrawingScan.Click += new System.EventHandler(this.btnDrawingScan_Click);
             // 
             // btnOwnerScan
             // 
@@ -633,6 +634,7 @@
             this.btnOwnerScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOwnerScan.Textcolor = System.Drawing.Color.White;
             this.btnOwnerScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOwnerScan.Click += new System.EventHandler(this.btnOwnerScan_Click);
             // 
             // pbBuildingImages
             // 
@@ -690,6 +692,7 @@
             this.btnImgScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnImgScan.Textcolor = System.Drawing.Color.White;
             this.btnImgScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImgScan.Click += new System.EventHandler(this.btnImgScan_Click);
             // 
             // btnImgBrowse
             // 

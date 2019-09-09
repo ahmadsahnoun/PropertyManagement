@@ -10,5 +10,6 @@ namespace PropertyManagementSystem.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<ContractDocument> ContractDocuments { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }

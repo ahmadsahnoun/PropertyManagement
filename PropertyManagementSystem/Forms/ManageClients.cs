@@ -2,8 +2,10 @@
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using PropertyManagementSystem.Models;
+using WIA;
 
 namespace PropertyManagementSystem.Forms
 {
@@ -215,6 +217,42 @@ namespace PropertyManagementSystem.Forms
         {
             if (rbIndividual.Checked)
                 pbClientLogo.Enabled = btnLogoScan.Enabled = btnLogoBrowse.Enabled = false;
+        }
+
+        private void btnLogoScan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var deviceManager = new DeviceManager();
+                DeviceInfo availableScanner = null;
+                for (var i = 1; i <= deviceManager.DeviceInfos.Count; i++) // Loop Through the get List Of Devices.
+                {
+                    if (deviceManager.DeviceInfos[i].Type != WiaDeviceType.ScannerDeviceType) // Skip device If it is not a scanner
+                    {
+                        continue;
+                    }
+                    availableScanner = deviceManager.DeviceInfos[i];
+                    break;
+                }
+                if (availableScanner != null)
+                {
+                    var device = availableScanner.Connect(); //Connect to the available scanner.
+                    var scanerItem = device.Items[1]; // select the scanner.
+                    var imgFile =
+                        (ImageFile)scanerItem.Transfer(FormatID
+                            .wiaFormatJPEG); //Retrieve an image in Jpg format and store it into a variable.
+                    var imageBytes = (byte[])imgFile.FileData.get_BinaryData();
+                    var ms = new MemoryStream(imageBytes);
+                    var img = Image.FromStream(ms);
+                    pbClientLogo.Image = img;
+                }
+                else
+                    MessageBox.Show(@"Sorry, no scanner is available", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (COMException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

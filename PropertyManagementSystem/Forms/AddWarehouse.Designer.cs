@@ -91,7 +91,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(898, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 15);
             this.pictureBox1.TabIndex = 1;
@@ -297,6 +297,7 @@
             this.btnOwnerScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOwnerScan.Textcolor = System.Drawing.Color.White;
             this.btnOwnerScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOwnerScan.Click += new System.EventHandler(this.btnOwnerScan_Click);
             // 
             // btnDrawingScan
             // 
@@ -333,6 +334,7 @@
             this.btnDrawingScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnDrawingScan.Textcolor = System.Drawing.Color.White;
             this.btnDrawingScan.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrawingScan.Click += new System.EventHandler(this.btnDrawingScan_Click);
             // 
             // btnDrawingBrowse
             // 

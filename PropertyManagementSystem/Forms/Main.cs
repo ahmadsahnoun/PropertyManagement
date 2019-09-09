@@ -94,5 +94,15 @@ namespace PropertyManagementSystem.Forms
         {
             new Claims().ShowDialog();
         }
+
+        private void btnReporting_Click(object sender, EventArgs e)
+        {
+            new ReportingForm().ShowDialog();
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            new ManageUsers().ShowDialog();
+        }
     }
 }

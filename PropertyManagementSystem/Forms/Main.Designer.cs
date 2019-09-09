@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPaymentClaim = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnContracts = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnClients = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnWarehouses = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -52,7 +53,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnPaymentClaim = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnReporting = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnUsers = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -62,10 +66,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.btnUsers);
+            this.panel1.Controls.Add(this.btnReporting);
             this.panel1.Controls.Add(this.btnPaymentClaim);
             this.panel1.Controls.Add(this.btnContracts);
             this.panel1.Controls.Add(this.btnClients);
@@ -79,6 +87,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(228, 676);
             this.panel1.TabIndex = 0;
+            // 
+            // btnPaymentClaim
+            // 
+            this.btnPaymentClaim.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnPaymentClaim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnPaymentClaim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPaymentClaim.BorderRadius = 7;
+            this.btnPaymentClaim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnPaymentClaim.ButtonText = "Payment Claim";
+            this.btnPaymentClaim.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPaymentClaim.DisabledColor = System.Drawing.Color.Gray;
+            this.btnPaymentClaim.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnPaymentClaim.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnPaymentClaim.Iconimage")));
+            this.btnPaymentClaim.Iconimage_right = null;
+            this.btnPaymentClaim.Iconimage_right_Selected = null;
+            this.btnPaymentClaim.Iconimage_Selected = null;
+            this.btnPaymentClaim.IconMarginLeft = 0;
+            this.btnPaymentClaim.IconMarginRight = 0;
+            this.btnPaymentClaim.IconRightVisible = true;
+            this.btnPaymentClaim.IconRightZoom = 0D;
+            this.btnPaymentClaim.IconVisible = true;
+            this.btnPaymentClaim.IconZoom = 90D;
+            this.btnPaymentClaim.IsTab = false;
+            this.btnPaymentClaim.Location = new System.Drawing.Point(3, 476);
+            this.btnPaymentClaim.Name = "btnPaymentClaim";
+            this.btnPaymentClaim.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnPaymentClaim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnPaymentClaim.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnPaymentClaim.selected = false;
+            this.btnPaymentClaim.Size = new System.Drawing.Size(222, 53);
+            this.btnPaymentClaim.TabIndex = 13;
+            this.btnPaymentClaim.Text = "Payment Claim";
+            this.btnPaymentClaim.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPaymentClaim.Textcolor = System.Drawing.Color.White;
+            this.btnPaymentClaim.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaymentClaim.Click += new System.EventHandler(this.btnPaymentClaim_Click);
             // 
             // btnContracts
             // 
@@ -321,8 +365,9 @@
             // lblFullName
             // 
             this.lblFullName.AutoSize = true;
+            this.lblFullName.BackColor = System.Drawing.Color.Transparent;
             this.lblFullName.Font = new System.Drawing.Font("Monotype Corsiva", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblFullName.Location = new System.Drawing.Point(301, 20);
+            this.lblFullName.Location = new System.Drawing.Point(951, 15);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(185, 24);
             this.lblFullName.TabIndex = 1;
@@ -449,7 +494,7 @@
             this.pictureBox8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.BackgroundImage")));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox8.Location = new System.Drawing.Point(246, 13);
+            this.pictureBox8.Location = new System.Drawing.Point(896, 8);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(48, 39);
@@ -468,48 +513,108 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // btnPaymentClaim
+            // pictureBox3
             // 
-            this.btnPaymentClaim.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
-            this.btnPaymentClaim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
-            this.btnPaymentClaim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPaymentClaim.BorderRadius = 7;
-            this.btnPaymentClaim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.btnPaymentClaim.ButtonText = "Payment Claim";
-            this.btnPaymentClaim.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPaymentClaim.DisabledColor = System.Drawing.Color.Gray;
-            this.btnPaymentClaim.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnPaymentClaim.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnPaymentClaim.Iconimage")));
-            this.btnPaymentClaim.Iconimage_right = null;
-            this.btnPaymentClaim.Iconimage_right_Selected = null;
-            this.btnPaymentClaim.Iconimage_Selected = null;
-            this.btnPaymentClaim.IconMarginLeft = 0;
-            this.btnPaymentClaim.IconMarginRight = 0;
-            this.btnPaymentClaim.IconRightVisible = true;
-            this.btnPaymentClaim.IconRightZoom = 0D;
-            this.btnPaymentClaim.IconVisible = true;
-            this.btnPaymentClaim.IconZoom = 90D;
-            this.btnPaymentClaim.IsTab = false;
-            this.btnPaymentClaim.Location = new System.Drawing.Point(3, 476);
-            this.btnPaymentClaim.Name = "btnPaymentClaim";
-            this.btnPaymentClaim.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
-            this.btnPaymentClaim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
-            this.btnPaymentClaim.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnPaymentClaim.selected = false;
-            this.btnPaymentClaim.Size = new System.Drawing.Size(222, 53);
-            this.btnPaymentClaim.TabIndex = 13;
-            this.btnPaymentClaim.Text = "Payment Claim";
-            this.btnPaymentClaim.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnPaymentClaim.Textcolor = System.Drawing.Color.White;
-            this.btnPaymentClaim.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPaymentClaim.Click += new System.EventHandler(this.btnPaymentClaim_Click);
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(896, 614);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 143;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label2.Location = new System.Drawing.Point(955, 629);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(355, 24);
+            this.label2.TabIndex = 144;
+            this.label2.Text = "ALRAND For Advanced Business CO.LTD";
+            // 
+            // btnReporting
+            // 
+            this.btnReporting.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnReporting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnReporting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnReporting.BorderRadius = 7;
+            this.btnReporting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnReporting.ButtonText = "Reporting";
+            this.btnReporting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReporting.DisabledColor = System.Drawing.Color.Gray;
+            this.btnReporting.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnReporting.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnReporting.Iconimage")));
+            this.btnReporting.Iconimage_right = null;
+            this.btnReporting.Iconimage_right_Selected = null;
+            this.btnReporting.Iconimage_Selected = null;
+            this.btnReporting.IconMarginLeft = 0;
+            this.btnReporting.IconMarginRight = 0;
+            this.btnReporting.IconRightVisible = true;
+            this.btnReporting.IconRightZoom = 0D;
+            this.btnReporting.IconVisible = true;
+            this.btnReporting.IconZoom = 90D;
+            this.btnReporting.IsTab = false;
+            this.btnReporting.Location = new System.Drawing.Point(3, 535);
+            this.btnReporting.Name = "btnReporting";
+            this.btnReporting.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnReporting.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnReporting.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnReporting.selected = false;
+            this.btnReporting.Size = new System.Drawing.Size(222, 53);
+            this.btnReporting.TabIndex = 14;
+            this.btnReporting.Text = "Reporting";
+            this.btnReporting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnReporting.Textcolor = System.Drawing.Color.White;
+            this.btnReporting.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporting.Click += new System.EventHandler(this.btnReporting_Click);
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUsers.BorderRadius = 7;
+            this.btnUsers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnUsers.ButtonText = "Users";
+            this.btnUsers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUsers.DisabledColor = System.Drawing.Color.Gray;
+            this.btnUsers.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnUsers.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnUsers.Iconimage")));
+            this.btnUsers.Iconimage_right = null;
+            this.btnUsers.Iconimage_right_Selected = null;
+            this.btnUsers.Iconimage_Selected = null;
+            this.btnUsers.IconMarginLeft = 0;
+            this.btnUsers.IconMarginRight = 0;
+            this.btnUsers.IconRightVisible = true;
+            this.btnUsers.IconRightZoom = 0D;
+            this.btnUsers.IconVisible = true;
+            this.btnUsers.IconZoom = 90D;
+            this.btnUsers.IsTab = false;
+            this.btnUsers.Location = new System.Drawing.Point(3, 594);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnUsers.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.btnUsers.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnUsers.selected = false;
+            this.btnUsers.Size = new System.Drawing.Size(222, 53);
+            this.btnUsers.TabIndex = 15;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnUsers.Textcolor = System.Drawing.Color.White;
+            this.btnUsers.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1351, 676);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pbClose);
             this.Controls.Add(this.lblChangePwd);
             this.Controls.Add(this.pbChangePwd);
@@ -527,7 +632,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
@@ -540,6 +644,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,5 +675,9 @@
         private System.Windows.Forms.PictureBox pbClose;
         private Bunifu.Framework.UI.BunifuFlatButton btnContracts;
         private Bunifu.Framework.UI.BunifuFlatButton btnPaymentClaim;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label2;
+        private Bunifu.Framework.UI.BunifuFlatButton btnReporting;
+        private Bunifu.Framework.UI.BunifuFlatButton btnUsers;
     }
 }
