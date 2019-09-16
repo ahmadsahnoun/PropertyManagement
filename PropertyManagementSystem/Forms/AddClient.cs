@@ -109,7 +109,10 @@ namespace PropertyManagementSystem.Forms
         private void rbIndividual_CheckedChanged(object sender, EventArgs e)
         {
             if (rbIndividual.Checked)
+            {
                 pbClientLogo.Enabled = btnLogoBrowse.Enabled = btnLogoScan.Enabled = false;
+                pbClientLogo.Image = null;
+            }
         }
 
         private void pbClientLogo_DoubleClick(object sender, EventArgs e)

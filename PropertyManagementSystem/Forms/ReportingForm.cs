@@ -12,7 +12,7 @@ namespace PropertyManagementSystem.Forms
 {
     public partial class ReportingForm : Form
     {
-        private MyDbContext _db = new MyDbContext();
+        private readonly MyDbContext _db = new MyDbContext();
         public ReportingForm()
         {
             InitializeComponent();
@@ -59,6 +59,7 @@ namespace PropertyManagementSystem.Forms
                     dt.Columns.Add("Period");
                     dt.Columns.Add("Start");
                     dt.Columns.Add("End");
+                    dt.Columns.Add("Property");
                     // ReSharper disable ConvertIfStatementToSwitchStatement
                     if (cbReportFor.selectedIndex == 0)
                     {
@@ -73,7 +74,8 @@ namespace PropertyManagementSystem.Forms
                                 {
                                     dt.Rows.Add(customer.Name, contract.Price, contract.Method,
                                         contract.PayEvery + " " + contract.Period,
-                                        contract.Start.ToShortDateString(), contract.End.ToShortDateString());
+                                        contract.Start.ToShortDateString(), contract.End.ToShortDateString(),
+                                        property.Name);
                                 }
                             }
                         }
@@ -132,15 +134,19 @@ namespace PropertyManagementSystem.Forms
                         var properties = _db.Properties.ToList();
                         foreach (var property in properties)
                         {
-                            var contract = _db.Contracts.Where(c => c.PropertyId == property.Id)
-                                .OrderByDescending(c => c.Id).FirstOrDefault();
+                            var contract = _db.Contracts.FirstOrDefault(c => c.PropertyId == property.Id);
                             if (contract != null)
                             {
-                                var client = _db.Clients.Find(contract.ClientId);
-                                // ReSharper disable once PossibleNullReferenceException
-                                dt.Rows.Add(property.Name, property.BuildingType.ToString(), property.Status.ToString(),
-                                    client.Name, contract.Start.ToShortDateString(), contract.End.ToShortDateString(),
-                                    contract.Price);
+                                var contracts = _db.Contracts.Where(c => c.PropertyId == property.Id).ToList();
+                                foreach (var c in contracts)
+                                {
+                                    var client = _db.Clients.Find(c.ClientId);
+                                    // ReSharper disable once PossibleNullReferenceException
+                                    dt.Rows.Add(property.Name, property.BuildingType.ToString(),
+                                        property.Status.ToString(),
+                                        client.Name, c.Start.ToShortDateString(), c.End.ToShortDateString(),
+                                        c.Price);
+                                }
                             }
                             else
                                 dt.Rows.Add(property.Name, property.BuildingType.ToString(), property.Status.ToString(),
@@ -178,93 +184,71 @@ namespace PropertyManagementSystem.Forms
             }
             else if (rbCashFlow.Checked)
             {
+
                 // ReSharper disable NotAccessedVariable
                 double collectedTotal = 0;
                 double notCollectedTotal = 0;
-                if (cbPeriod.selectedIndex >= 0)
+                var start = dtpStart.Value;
+                var end = dtpEnd.Value;
+
+                var dt = new DataTable();
+                dt.Columns.Add("Client");
+                dt.Columns.Add("Property");
+                dt.Columns.Add("PaymentDate");
+                dt.Columns.Add("Amount");
+                dt.Columns.Add("Status");
+                dt.Columns.Add("CollectedTotal");
+                dt.Columns.Add("NotCollectedTotal");
+                var payments = _db.Payments.Where(p => p.PaymentDate >= start && p.PaymentDate <= end).ToList();
+                using (var db = new MyDbContext())
                 {
-                    var start = DateTime.Now;
-                    var end = DateTime.Now;
-                    // ReSharper disable once SwitchStatementMissingSomeCases
-                    switch (cbPeriod.selectedIndex)
+                    foreach (var payment in payments)
                     {
-                        case 0:
-                            start = DateTime.Parse(DateTime.Now.Year + "/01/01");
-                            end = DateTime.Parse(DateTime.Now.Year + "/03/31");
-                            break;
-                        case 1:
-                            start = DateTime.Parse(DateTime.Now.Year + "/04/01");
-                            end = DateTime.Parse(DateTime.Now.Year + "/06/30");
-                            break;
-                        case 2:
-                            start = DateTime.Parse(DateTime.Now.Year + "/07/01");
-                            end = DateTime.Parse(DateTime.Now.Year + "/09/30 23:59:59");
-                            break;
-                        case 3:
-                            start = DateTime.Parse(DateTime.Now.Year + "/10/01");
-                            end = DateTime.Parse(DateTime.Now.Year + "/12/31 23:59:59");
-                            break;
+                        var contract = db.Contracts.Find(payment.ContractId);
+                        // ReSharper disable PossibleNullReferenceException
+                        var property = db.Properties.Find(contract.PropertyId);
+                        var client = db.Clients.Find(contract.ClientId);
+                        dt.Rows.Add(client.Name, property.Name, payment.PaymentDate.ToShortDateString(),
+                            payment.PayedAmount.ToString(CultureInfo.InvariantCulture), "Collected");
+                        collectedTotal += payment.PayedAmount;
                     }
-                    var dt = new DataTable();
-                    dt.Columns.Add("Client");
-                    dt.Columns.Add("Property");
-                    dt.Columns.Add("PaymentDate");
-                    dt.Columns.Add("Amount");
-                    dt.Columns.Add("Status");
-                    dt.Columns.Add("CollectedTotal");
-                    dt.Columns.Add("NotCollectedTotal");
-                    var payments = _db.Payments.Where(p => p.PaymentDate >= start && p.PaymentDate <= end).ToList();
+                }
+
+
+                if (chbUncollected.Checked)
+                {
+                    // ReSharper disable once RedundantAssignment
+                    var contractsPending = new List<Contract>();
                     using (var db = new MyDbContext())
                     {
-                        foreach (var payment in payments)
-                        {
-                            var contract = db.Contracts.Find(payment.ContractId);
-                            // ReSharper disable PossibleNullReferenceException
-                            var property = db.Properties.Find(contract.PropertyId);
-                            var client = db.Clients.Find(contract.ClientId);
-                            dt.Rows.Add(client.Name, property.Name, payment.PaymentDate.ToShortDateString(),
-                                payment.PayedAmount.ToString(CultureInfo.InvariantCulture), "Collected");
-                            collectedTotal += payment.PayedAmount;
-                        }
+                        contractsPending = db.Contracts.Where(c =>
+                            c.PayStatus.Equals("Pending") && c.PayDate >= start && c.PayDate <= end).ToList();
                     }
 
-
-                    if (chbUncollected.Checked)
+                    foreach (var contract in contractsPending)
                     {
-                        // ReSharper disable once RedundantAssignment
-                        var contractsPending = new List<Contract>();
                         using (var db = new MyDbContext())
                         {
-                            contractsPending = db.Contracts.Where(c =>
-                                c.PayStatus.Equals("Pending") && c.PayDate >= start && c.PayDate <= end).ToList();
-                        }
+                            var property = db.Properties.Find(contract.PropertyId);
 
-                        foreach (var contract in contractsPending)
-                        {
-                            using (var db = new MyDbContext())
-                            {
-                                var property = db.Properties.Find(contract.PropertyId);
+                            var client = db.Clients.Find(contract.ClientId);
 
-                                var client = db.Clients.Find(contract.ClientId);
-
-                                dt.Rows.Add(client.Name, property.Name, "",
-                                    contract.Price.ToString(CultureInfo.InvariantCulture), "Not Collected");
-                                notCollectedTotal += contract.Price;
-                            }
+                            dt.Rows.Add(client.Name, property.Name, "",
+                                contract.Price.ToString(CultureInfo.InvariantCulture), "Not Collected");
+                            notCollectedTotal += contract.Price;
                         }
                     }
-
-
-                    var rpt = new rptCashFlow();
-                    var textCollectedTotal = (TextObject)rpt.ReportDefinition.ReportObjects["CollectedTotal"];
-                    var textNotCollectedTotal = (TextObject)rpt.ReportDefinition.ReportObjects["NotCollectedTotal"];
-                    textCollectedTotal.Text = collectedTotal.ToString(CultureInfo.InvariantCulture);
-                    textNotCollectedTotal.Text = notCollectedTotal.ToString(CultureInfo.InvariantCulture);
-                    rpt.SetDataSource(dt);
-                    rpt.PrintToPrinter(1, true, 0, 0);
                 }
-                else
-                    MessageBox.Show(@"Please fill all the fields", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                var rpt = new rptCashFlow();
+                var textCollectedTotal = (TextObject)rpt.ReportDefinition.ReportObjects["CollectedTotal"];
+                var textNotCollectedTotal = (TextObject)rpt.ReportDefinition.ReportObjects["NotCollectedTotal"];
+                textCollectedTotal.Text = collectedTotal.ToString(CultureInfo.InvariantCulture);
+                textNotCollectedTotal.Text = notCollectedTotal.ToString(CultureInfo.InvariantCulture);
+                rpt.SetDataSource(dt);
+                rpt.PrintToPrinter(1, true, 0, 0);
+
             }
         }
 

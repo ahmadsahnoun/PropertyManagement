@@ -361,6 +361,8 @@ namespace PropertyManagementSystem.Reports {
             
             private global::System.Data.DataColumn columnEnd;
             
+            private global::System.Data.DataColumn columnProperty;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DetailedDataTable() {
@@ -444,6 +446,14 @@ namespace PropertyManagementSystem.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PropertyColumn {
+                get {
+                    return this.columnProperty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +489,7 @@ namespace PropertyManagementSystem.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetailedRow AddDetailedRow(string Customer, string Price, string Method, string Period, string Start, string End) {
+            public DetailedRow AddDetailedRow(string Customer, string Price, string Method, string Period, string Start, string End, string Property) {
                 DetailedRow rowDetailedRow = ((DetailedRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Customer,
@@ -487,7 +497,8 @@ namespace PropertyManagementSystem.Reports {
                         Method,
                         Period,
                         Start,
-                        End};
+                        End,
+                        Property};
                 rowDetailedRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDetailedRow);
                 return rowDetailedRow;
@@ -516,6 +527,7 @@ namespace PropertyManagementSystem.Reports {
                 this.columnPeriod = base.Columns["Period"];
                 this.columnStart = base.Columns["Start"];
                 this.columnEnd = base.Columns["End"];
+                this.columnProperty = base.Columns["Property"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +545,8 @@ namespace PropertyManagementSystem.Reports {
                 base.Columns.Add(this.columnStart);
                 this.columnEnd = new global::System.Data.DataColumn("End", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnd);
+                this.columnProperty = new global::System.Data.DataColumn("Property", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProperty);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1433,6 +1447,22 @@ namespace PropertyManagementSystem.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Property {
+                get {
+                    try {
+                        return ((string)(this[this.tableDetailed.PropertyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Property\' in table \'Detailed\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDetailed.PropertyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCustomerNull() {
                 return this.IsNull(this.tableDetailed.CustomerColumn);
             }
@@ -1501,6 +1531,18 @@ namespace PropertyManagementSystem.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEndNull() {
                 this[this.tableDetailed.EndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPropertyNull() {
+                return this.IsNull(this.tableDetailed.PropertyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPropertyNull() {
+                this[this.tableDetailed.PropertyColumn] = global::System.Convert.DBNull;
             }
         }
         

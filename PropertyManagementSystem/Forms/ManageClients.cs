@@ -72,8 +72,9 @@ namespace PropertyManagementSystem.Forms
             txtPhone.Text = client.Phone;
             rbIndividual.Checked = client.ClientType == Models.ClientType.Individual;
             rbCompany.Checked = client.ClientType == Models.ClientType.Company;
-            if(rbCompany.Checked)
+            if (rbCompany.Checked)
                 pbClientLogo.Image = ByteArrayToImage(client.Logo);
+            else pbClientLogo.Image = null;
         }
 
         private void EnableAll()
@@ -216,7 +217,10 @@ namespace PropertyManagementSystem.Forms
         private void rbIndividual_CheckedChanged(object sender, EventArgs e)
         {
             if (rbIndividual.Checked)
+            {
                 pbClientLogo.Enabled = btnLogoScan.Enabled = btnLogoBrowse.Enabled = false;
+                pbClientLogo.Image = null;
+            }
         }
 
         private void btnLogoScan_Click(object sender, EventArgs e)

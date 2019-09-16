@@ -55,6 +55,10 @@
             this.chbUncollected = new System.Windows.Forms.CheckBox();
             this.cbPeriod = new Bunifu.Framework.UI.BunifuDropdown();
             this.label9 = new System.Windows.Forms.Label();
+            this.dtpStart = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dtpEnd = new Bunifu.Framework.UI.BunifuDatepicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbDetailed.SuspendLayout();
             this.gbOccupation.SuspendLayout();
@@ -386,6 +390,10 @@
             // 
             // gbCashFlow
             // 
+            this.gbCashFlow.Controls.Add(this.label8);
+            this.gbCashFlow.Controls.Add(this.dtpEnd);
+            this.gbCashFlow.Controls.Add(this.label7);
+            this.gbCashFlow.Controls.Add(this.dtpStart);
             this.gbCashFlow.Controls.Add(this.chbUncollected);
             this.gbCashFlow.Controls.Add(this.cbPeriod);
             this.gbCashFlow.Controls.Add(this.label9);
@@ -400,7 +408,7 @@
             // chbUncollected
             // 
             this.chbUncollected.AutoSize = true;
-            this.chbUncollected.Location = new System.Drawing.Point(119, 84);
+            this.chbUncollected.Location = new System.Drawing.Point(124, 141);
             this.chbUncollected.Name = "chbUncollected";
             this.chbUncollected.Size = new System.Drawing.Size(206, 21);
             this.chbUncollected.TabIndex = 283;
@@ -419,7 +427,7 @@
         "Second quarter of the year",
         "Third quarter of the year",
         "Fourth quarter of the year"};
-            this.cbPeriod.Location = new System.Drawing.Point(121, 26);
+            this.cbPeriod.Location = new System.Drawing.Point(121, 20);
             this.cbPeriod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbPeriod.Name = "cbPeriod";
             this.cbPeriod.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
@@ -427,16 +435,66 @@
             this.cbPeriod.selectedIndex = -1;
             this.cbPeriod.Size = new System.Drawing.Size(239, 33);
             this.cbPeriod.TabIndex = 282;
+            this.cbPeriod.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(11, 35);
+            this.label9.Location = new System.Drawing.Point(11, 29);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(101, 17);
             this.label9.TabIndex = 281;
             this.label9.Text = "Choose Period";
+            // 
+            // dtpStart
+            // 
+            this.dtpStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.dtpStart.BorderRadius = 7;
+            this.dtpStart.ForeColor = System.Drawing.Color.White;
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpStart.FormatCustom = null;
+            this.dtpStart.Location = new System.Drawing.Point(121, 59);
+            this.dtpStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(239, 33);
+            this.dtpStart.TabIndex = 284;
+            this.dtpStart.Value = new System.DateTime(2019, 9, 1, 18, 21, 38, 542);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label7.Location = new System.Drawing.Point(52, 69);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 17);
+            this.label7.TabIndex = 285;
+            this.label7.Text = "From";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.Location = new System.Drawing.Point(52, 106);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(25, 17);
+            this.label8.TabIndex = 287;
+            this.label8.Text = "To";
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(110)))), ((int)(((byte)(247)))));
+            this.dtpEnd.BorderRadius = 7;
+            this.dtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.dtpEnd.ForeColor = System.Drawing.Color.White;
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpEnd.FormatCustom = null;
+            this.dtpEnd.Location = new System.Drawing.Point(121, 99);
+            this.dtpEnd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(239, 33);
+            this.dtpEnd.TabIndex = 286;
+            this.dtpEnd.Value = new System.DateTime(2019, 9, 1, 18, 21, 38, 542);
             // 
             // ReportingForm
             // 
@@ -504,5 +562,9 @@
         private Bunifu.Framework.UI.BunifuDropdown cbPeriod;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chbUncollected;
+        private System.Windows.Forms.Label label8;
+        private Bunifu.Framework.UI.BunifuDatepicker dtpEnd;
+        private System.Windows.Forms.Label label7;
+        private Bunifu.Framework.UI.BunifuDatepicker dtpStart;
     }
 }
