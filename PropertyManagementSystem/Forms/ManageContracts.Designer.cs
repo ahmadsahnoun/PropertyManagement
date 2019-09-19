@@ -75,7 +75,7 @@
             this.rbPrepaid = new System.Windows.Forms.RadioButton();
             this.gbPaymentMethod = new System.Windows.Forms.GroupBox();
             this.rbCheque = new System.Windows.Forms.RadioButton();
-            this.rbTransform = new System.Windows.Forms.RadioButton();
+            this.rbTransfer = new System.Windows.Forms.RadioButton();
             this.rbCash = new System.Windows.Forms.RadioButton();
             this.btnEdit = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -700,7 +700,7 @@
             // gbPaymentMethod
             // 
             this.gbPaymentMethod.Controls.Add(this.rbCheque);
-            this.gbPaymentMethod.Controls.Add(this.rbTransform);
+            this.gbPaymentMethod.Controls.Add(this.rbTransfer);
             this.gbPaymentMethod.Controls.Add(this.rbCash);
             this.gbPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.gbPaymentMethod.Location = new System.Drawing.Point(882, 432);
@@ -720,15 +720,15 @@
             this.rbCheque.Text = "Cheque";
             this.rbCheque.UseVisualStyleBackColor = true;
             // 
-            // rbTransform
+            // rbTransfer
             // 
-            this.rbTransform.AutoSize = true;
-            this.rbTransform.Location = new System.Drawing.Point(17, 59);
-            this.rbTransform.Name = "rbTransform";
-            this.rbTransform.Size = new System.Drawing.Size(91, 21);
-            this.rbTransform.TabIndex = 1;
-            this.rbTransform.Text = "Transform";
-            this.rbTransform.UseVisualStyleBackColor = true;
+            this.rbTransfer.AutoSize = true;
+            this.rbTransfer.Location = new System.Drawing.Point(17, 59);
+            this.rbTransfer.Name = "rbTransfer";
+            this.rbTransfer.Size = new System.Drawing.Size(80, 21);
+            this.rbTransfer.TabIndex = 1;
+            this.rbTransfer.Text = "Transfer";
+            this.rbTransfer.UseVisualStyleBackColor = true;
             // 
             // rbCash
             // 
@@ -1030,7 +1030,7 @@
         private System.Windows.Forms.RadioButton rbPrepaid;
         private System.Windows.Forms.GroupBox gbPaymentMethod;
         private System.Windows.Forms.RadioButton rbCheque;
-        private System.Windows.Forms.RadioButton rbTransform;
+        private System.Windows.Forms.RadioButton rbTransfer;
         private System.Windows.Forms.RadioButton rbCash;
         private Bunifu.Framework.UI.BunifuFlatButton btnEdit;
         private Bunifu.Framework.UI.BunifuFlatButton btnAdd;

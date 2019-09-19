@@ -152,7 +152,7 @@ namespace PropertyManagementSystem.Forms
             dtpEnd.Value = contract.End;
             rbCash.Checked = contract.Method == PaymentMethod.Cash;
             rbCheque.Checked = contract.Method == PaymentMethod.Cheque;
-            rbTransform.Checked = contract.Method == PaymentMethod.Transform;
+            rbTransfer.Checked = contract.Method == PaymentMethod.Transfer;
             rbPostpaid.Checked = contract.Payment == PaymentTypes.Postpaid;
             rbPrepaid.Checked = contract.Payment == PaymentTypes.Prepaid;
             txtPayEvery.Text = contract.PayEvery.ToString(CultureInfo.InvariantCulture);
@@ -209,7 +209,7 @@ namespace PropertyManagementSystem.Forms
             cbClients.selectedIndex =
                 cbPropertyTypes.selectedIndex = cbProperties.selectedIndex = cbPeriod.selectedIndex = -1;
             txtPrice.Text = txtPayEvery.Text = dtpEnd.Text = dtpStart.Text = "";
-            rbCash.Checked = rbCheque.Checked = rbTransform.Checked = rbPostpaid.Checked = rbPrepaid.Checked = false;
+            rbCash.Checked = rbCheque.Checked = rbTransfer.Checked = rbPostpaid.Checked = rbPrepaid.Checked = false;
             pbContract.Image = null;
             pbLeft.Enabled = pbRight.Enabled = false;
             txtNum.Text = txtTotal.Text = @"0";
@@ -275,7 +275,7 @@ namespace PropertyManagementSystem.Forms
                 cbClients.selectedIndex >= 0 && cbProperties.selectedIndex >= 0 && cbPropertyTypes.selectedIndex >= 0 &&
                 cbPeriod.selectedIndex > -1 && !string.IsNullOrWhiteSpace(dtpEnd.Value.ToShortDateString()) &&
                 !string.IsNullOrWhiteSpace(dtpStart.Value.ToShortDateString()) &&
-                (rbCash.Checked || rbCheque.Checked || rbTransform.Checked) &&
+                (rbCash.Checked || rbCheque.Checked || rbTransfer.Checked) &&
                 (rbPrepaid.Checked || rbPostpaid.Checked))
             {
                 var contractId = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
@@ -285,7 +285,7 @@ namespace PropertyManagementSystem.Forms
                 // ReSharper disable once PossibleNullReferenceException
                 contract.End = dtpEnd.Value;
                 contract.Method = rbCash.Checked ? PaymentMethod.Cash :
-                    rbCheque.Checked ? PaymentMethod.Cheque : PaymentMethod.Transform;
+                    rbCheque.Checked ? PaymentMethod.Cheque : PaymentMethod.Transfer;
                 contract.PayEvery = float.Parse(txtPayEvery.Text);
                 contract.Payment = rbPrepaid.Checked ? PaymentTypes.Prepaid : PaymentTypes.Postpaid;
                 contract.Period = cbPeriod.selectedIndex == 0 ? PaymentPeriod.Day :

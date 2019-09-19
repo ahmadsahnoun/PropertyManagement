@@ -38,7 +38,7 @@ namespace PropertyManagementSystem.Models
     internal enum PaymentMethod
     {
         Cash = 1,
-        Transform = 2,
+        Transfer = 2,
         Cheque = 3
     }
 }

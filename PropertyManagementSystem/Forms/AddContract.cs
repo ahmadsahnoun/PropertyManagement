@@ -179,7 +179,7 @@ namespace PropertyManagementSystem.Forms
             if (cbClients.selectedIndex >= 0 && cbPropertyTypes.selectedIndex >= 0 && cbProperties.selectedIndex >= 0 &&
                 !string.IsNullOrWhiteSpace(txtPrice.Text) && !string.IsNullOrWhiteSpace(dtpStart.Value.ToShortDateString()) &&
                 !string.IsNullOrWhiteSpace(dtpEnd.Value.ToShortDateString()) && (rbPostpaid.Checked || rbPrepaid.Checked) &&
-                (rbCash.Checked || rbCheque.Checked || rbTransform.Checked) &&
+                (rbCash.Checked || rbCheque.Checked || rbTransfer.Checked) &&
                 !string.IsNullOrWhiteSpace(txtPayEvery.Text) && cbPeriod.selectedIndex >= 0)
             {
                 var contract = new Contract()
@@ -187,7 +187,7 @@ namespace PropertyManagementSystem.Forms
                     ClientId = int.Parse(cbTempClient.SelectedValue.ToString()),
                     End = dtpEnd.Value,
                     Method = rbCash.Checked ? PaymentMethod.Cash :
-                        rbCheque.Checked ? PaymentMethod.Cheque : PaymentMethod.Transform,
+                        rbCheque.Checked ? PaymentMethod.Cheque : PaymentMethod.Transfer,
                     PayEvery = float.Parse(txtPayEvery.Text),
                     Payment = rbPrepaid.Checked ? PaymentTypes.Prepaid : PaymentTypes.Postpaid,
                     Period = cbPeriod.selectedIndex == 0 ? PaymentPeriod.Day :
@@ -235,7 +235,7 @@ namespace PropertyManagementSystem.Forms
             cbClients.selectedIndex =
                 cbPeriod.selectedIndex = cbProperties.selectedIndex = cbPropertyTypes.selectedIndex = -1;
             txtPrice.Text = dtpStart.Text = dtpEnd.Text = txtPayEvery.Text = "";
-            rbCash.Checked = rbCheque.Checked = rbPostpaid.Checked = rbPrepaid.Checked = rbTransform.Checked = false;
+            rbCash.Checked = rbCheque.Checked = rbPostpaid.Checked = rbPrepaid.Checked = rbTransfer.Checked = false;
             pbContract.Image = null;
             dgvContract.Rows.Clear();
             pbLeft.Enabled = pbRight.Enabled = false;

@@ -67,7 +67,7 @@ namespace PropertyManagementSystem.Forms
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0) return;
-            if (txtMethod.Text.Equals("Transform"))
+            if (txtMethod.Text.Equals("Transfer"))
             {
                 var rpt = new rptBankClaim();
                 var textDate = (TextObject) rpt.ReportDefinition.ReportObjects["textDate"];

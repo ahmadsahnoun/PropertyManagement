@@ -45,7 +45,7 @@
             this.cbPeriod = new Bunifu.Framework.UI.BunifuDropdown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbCheque = new System.Windows.Forms.RadioButton();
-            this.rbTransform = new System.Windows.Forms.RadioButton();
+            this.rbTransfer = new System.Windows.Forms.RadioButton();
             this.rbCash = new System.Windows.Forms.RadioButton();
             this.btnConfirm = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dgvContract = new System.Windows.Forms.DataGridView();
@@ -271,7 +271,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rbCheque);
-            this.groupBox2.Controls.Add(this.rbTransform);
+            this.groupBox2.Controls.Add(this.rbTransfer);
             this.groupBox2.Controls.Add(this.rbCash);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.groupBox2.Location = new System.Drawing.Point(397, 349);
@@ -291,15 +291,15 @@
             this.rbCheque.Text = "Cheque";
             this.rbCheque.UseVisualStyleBackColor = true;
             // 
-            // rbTransform
+            // rbTransfer
             // 
-            this.rbTransform.AutoSize = true;
-            this.rbTransform.Location = new System.Drawing.Point(17, 59);
-            this.rbTransform.Name = "rbTransform";
-            this.rbTransform.Size = new System.Drawing.Size(91, 21);
-            this.rbTransform.TabIndex = 1;
-            this.rbTransform.Text = "Transform";
-            this.rbTransform.UseVisualStyleBackColor = true;
+            this.rbTransfer.AutoSize = true;
+            this.rbTransfer.Location = new System.Drawing.Point(17, 59);
+            this.rbTransfer.Name = "rbTransfer";
+            this.rbTransfer.Size = new System.Drawing.Size(80, 21);
+            this.rbTransfer.TabIndex = 1;
+            this.rbTransfer.Text = "Transfer";
+            this.rbTransfer.UseVisualStyleBackColor = true;
             // 
             // rbCash
             // 
@@ -834,7 +834,7 @@
         private Bunifu.Framework.UI.BunifuDropdown cbPeriod;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbCheque;
-        private System.Windows.Forms.RadioButton rbTransform;
+        private System.Windows.Forms.RadioButton rbTransfer;
         private System.Windows.Forms.RadioButton rbCash;
         private Bunifu.Framework.UI.BunifuFlatButton btnConfirm;
         private System.Windows.Forms.DataGridView dgvContract;

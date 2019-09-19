@@ -593,12 +593,12 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label8.Location = new System.Drawing.Point(774, 88);
+            this.label8.Location = new System.Drawing.Point(743, 89);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 17);
+            this.label8.Size = new System.Drawing.Size(162, 17);
             this.label8.TabIndex = 320;
-            this.label8.Text = "Company Logo";
+            this.label8.Text = "Payment Documentation";
             // 
             // pbClaimDoc
             // 
