@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using PropertyManagementSystem.Models;
 
@@ -7,6 +8,7 @@ namespace PropertyManagementSystem.Forms
 {
     public partial class Main : Form
     {
+        private readonly MyDbContext _db = new MyDbContext();
         public Main()
         {
             InitializeComponent();
@@ -19,6 +21,18 @@ namespace PropertyManagementSystem.Forms
             Size = Screen.PrimaryScreen.Bounds.Size;
             CenterToScreen();
             CheckPermissions();
+            CheckNewClaims();
+        }
+
+        private void CheckNewClaims()
+        {
+            var date = DateTime.Now.AddDays(10);
+            var contracts = _db.Contracts.Where(c => date >= c.PayDate).ToList();
+            foreach (var contract in contracts)
+            {
+                contract.PayStatus = "Pending";
+                _db.SaveChanges();
+            }
         }
 
         private void CheckPermissions()

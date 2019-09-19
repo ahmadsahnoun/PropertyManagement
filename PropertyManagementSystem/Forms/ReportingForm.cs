@@ -205,10 +205,14 @@ namespace PropertyManagementSystem.Forms
                     foreach (var payment in payments)
                     {
                         var contract = db.Contracts.Find(payment.ContractId);
+                        if(contract == null) continue;
                         // ReSharper disable PossibleNullReferenceException
                         var property = db.Properties.Find(contract.PropertyId);
                         var client = db.Clients.Find(contract.ClientId);
-                        dt.Rows.Add(client.Name, property.Name, payment.PaymentDate.ToShortDateString(),
+                        dt.Rows.Add(client.Name, property.Name,
+                            string.IsNullOrWhiteSpace(payment.PaymentDate.ToShortDateString())
+                                ? contract.PayDate.ToShortDateString()
+                                : payment.PaymentDate.ToShortDateString(),
                             payment.PayedAmount.ToString(CultureInfo.InvariantCulture), "Collected");
                         collectedTotal += payment.PayedAmount;
                     }
@@ -233,7 +237,7 @@ namespace PropertyManagementSystem.Forms
 
                             var client = db.Clients.Find(contract.ClientId);
 
-                            dt.Rows.Add(client.Name, property.Name, "",
+                            dt.Rows.Add(client.Name, property.Name, contract.PayDate.ToShortDateString(),
                                 contract.Price.ToString(CultureInfo.InvariantCulture), "Not Collected");
                             notCollectedTotal += contract.Price;
                         }

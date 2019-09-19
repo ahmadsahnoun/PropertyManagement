@@ -118,7 +118,6 @@ namespace PropertyManagementSystem.Forms
             if (dataGridView1.SelectedRows.Count == 0) return;
             var contractId = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
             var contract = _db.Contracts.Find(contractId);
-            contract.PayStatus = "Payed";
             contract.ClaimDocument = ImageToByteArray(pbClaimDoc.Image);
             var payDate = contract.Period == PaymentPeriod.Day
                 ? contract.PayDate.AddDays(contract.PayEvery)
@@ -131,7 +130,10 @@ namespace PropertyManagementSystem.Forms
                         contract.PayDate.AddMonths(int.Parse(contract.PayEvery.ToString(CultureInfo.InvariantCulture)))
                         : contract.PayDate.AddYears(int.Parse(contract.PayEvery.ToString(CultureInfo.InvariantCulture)));
             if (contract.End > payDate)
+            {
                 contract.PayDate = payDate;
+                contract.PayStatus = DateTime.Now.AddDays(10) < payDate? "Payed" : "Pending";
+            }
             else
             {
                 var property = _db.Properties.Find(contract.PropertyId);
