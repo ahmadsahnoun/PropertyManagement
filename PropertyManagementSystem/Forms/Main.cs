@@ -18,6 +18,16 @@ namespace PropertyManagementSystem.Forms
             lblFullName.Text = CurrentUser.FullName;
             Size = Screen.PrimaryScreen.Bounds.Size;
             CenterToScreen();
+            CheckPermissions();
+        }
+
+        private void CheckPermissions()
+        {
+            if (CurrentUser.UserType == UserType.Administrator)
+                return;
+            btnClients.Enabled = btnContracts.Enabled =
+                btnPaymentClaim.Enabled = btnUsers.Enabled = btnReporting.Enabled = false;
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

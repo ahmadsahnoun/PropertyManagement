@@ -26,7 +26,18 @@ namespace PropertyManagementSystem.Forms
 
         private void ManageFarms_Load(object sender, EventArgs e)
         {
-            Populate(); 
+            Populate();
+            CheckPermission();
+        }
+
+        private void CheckPermission()
+        {
+            if(CurrentUser.UserType == UserType.Administrator)
+                return;
+            txtName.Enabled = txtAddress.Enabled = txtTotalArea.Enabled =
+                cbUnit.Enabled = txtLocationUrl.Enabled = btnEdit.Enabled = btnDelete.Enabled =
+                    btnAdd.Enabled = btnDrawingScan.Enabled =
+                        btnOwnerScan.Enabled = btnOwnerBrowse.Enabled = btnDrawingBrowse.Enabled = false;
         }
 
         private void Populate()
@@ -103,6 +114,7 @@ namespace PropertyManagementSystem.Forms
             txtOwnerNum.Text = txtOwnerTotal.Text = dgvOwnershipDocs.Rows.Count.ToString();
             pbOwnershipDocs.Image = dgvOwnershipDocs.Rows[int.Parse(txtOwnerNum.Text) - 1].Cells[0].Value as Image;
             dgvOwnershipDocs.Rows[int.Parse(txtOwnerNum.Text) - 1].Selected = true;
+            CheckPermission();
         }
 
         private void EnableAll()
@@ -431,10 +443,10 @@ namespace PropertyManagementSystem.Forms
                             .wiaFormatJPEG); //Retrieve an image in Jpg format and store it into a variable.
                     var imageBytes = (byte[])imgFile.FileData.get_BinaryData();
                     var ms = new MemoryStream(imageBytes);
-                    var img = Image.FromStream(ms);
-                    pbOwnershipDocs.Image = img;
+                    var imgVar = Image.FromStream(ms);
+                    pbOwnershipDocs.Image = imgVar;
                     dgvOwnershipDocs.SelectedRows[0].Cells[0].Value = null;
-                    dgvOwnershipDocs.SelectedRows[0].Cells[0].Value = img;
+                    dgvOwnershipDocs.SelectedRows[0].Cells[0].Value = imgVar;
                 }
                 else
                     MessageBox.Show(@"Sorry, no scanner is available", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -469,10 +481,10 @@ namespace PropertyManagementSystem.Forms
                             .wiaFormatJPEG); //Retrieve an image in Jpg format and store it into a variable.
                     var imageBytes = (byte[])imgFile.FileData.get_BinaryData();
                     var ms = new MemoryStream(imageBytes);
-                    var img = Image.FromStream(ms);
-                    pbDrawings.Image = img;
+                    var imgVar = Image.FromStream(ms);
+                    pbDrawings.Image = imgVar;
                     dgvBuildingDrawings.SelectedRows[0].Cells[0].Value = null;
-                    dgvBuildingDrawings.SelectedRows[0].Cells[0].Value = img;
+                    dgvBuildingDrawings.SelectedRows[0].Cells[0].Value = imgVar;
                 }
                 else
                     MessageBox.Show(@"Sorry, no scanner is available", "", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -39,6 +39,18 @@ namespace PropertyManagementSystem.Forms
         private void ManageCommercialBuildings_Load(object sender, EventArgs e)
         {
             Populate();
+            CheckPermission();
+        }
+
+        private void CheckPermission()
+        {
+            if (CurrentUser.UserType == UserType.Administrator)
+                return;
+            txtName.Enabled = txtAddress.Enabled = txtBuiltArea.Enabled = txtNotBuiltArea.Enabled = cbUnit.Enabled =
+                txtLocationUrl.Enabled = txtNoOfFloors.Enabled =
+                    btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnOwnerBrowse.Enabled =
+                        btnDrawingBrowse.Enabled = btnImgBrowse.Enabled =
+                            btnDrawingScan.Enabled = btnImgScan.Enabled = btnOwnerScan.Enabled = false;
         }
 
         private void Populate()
@@ -127,6 +139,7 @@ namespace PropertyManagementSystem.Forms
             txtOwnerNum.Text = txtOwnerTotal.Text = dgvOwnershipDocs.Rows.Count.ToString();
             pbOwnershipDocs.Image = dgvOwnershipDocs.Rows[int.Parse(txtOwnerNum.Text) - 1].Cells[0].Value as Image;
             dgvOwnershipDocs.Rows[int.Parse(txtOwnerNum.Text) - 1].Selected = true;
+            CheckPermission();
         }
 
         private void EnableAll()

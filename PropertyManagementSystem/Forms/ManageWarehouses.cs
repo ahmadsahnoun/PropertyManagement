@@ -27,6 +27,17 @@ namespace PropertyManagementSystem.Forms
         private void ManageWarehouses_Load(object sender, EventArgs e)
         {
             Populate();
+            CheckPermission();
+        }
+
+        private void CheckPermission()
+        {
+            if(CurrentUser.UserType == UserType.Administrator)
+                return;
+            txtName.Enabled = txtAddress.Enabled = txtCoveredArea.Enabled = txtNotCoveredArea.Enabled =
+                cbUnit.Enabled = txtLocationUrl.Enabled = btnEdit.Enabled = btnDelete.Enabled =
+                    btnAdd.Enabled = btnOwnerBrowse.Enabled =
+                        btnDrawingBrowse.Enabled = btnDrawingScan.Enabled = btnOwnerScan.Enabled = false;
         }
 
         private void Populate()
@@ -105,6 +116,7 @@ namespace PropertyManagementSystem.Forms
             txtOwnerNum.Text = txtOwnerTotal.Text = dgvOwnershipDocs.Rows.Count.ToString();
             pbOwnershipDocs.Image = dgvOwnershipDocs.Rows[int.Parse(txtOwnerNum.Text) - 1].Cells[0].Value as Image;
             dgvOwnershipDocs.Rows[int.Parse(txtOwnerNum.Text) - 1].Selected = true;
+            CheckPermission();
         }
         private void EnableAll()
         {
