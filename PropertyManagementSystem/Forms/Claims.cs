@@ -72,9 +72,7 @@ namespace PropertyManagementSystem.Forms
                 var rpt = new rptBankClaim();
                 var textDate = (TextObject) rpt.ReportDefinition.ReportObjects["textDate"];
                 var textClient = (TextObject) rpt.ReportDefinition.ReportObjects["textClient"];
-                var textPropertyType = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyType"];
                 var textPropertyName = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyName"];
-                var textPropertyType2 = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyType2"];
                 var textPropertyName2 = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyName2"];
                 var textPrice = (TextObject)rpt.ReportDefinition.ReportObjects["textPrice"];
                 var textFrom = (TextObject)rpt.ReportDefinition.ReportObjects["textFrom"];
@@ -85,8 +83,6 @@ namespace PropertyManagementSystem.Forms
 
                 textDate.Text = DateTime.Now.ToShortDateString();
                 textClient.Text = txtClient.Text;
-                textPropertyType.Text =
-                    textPropertyType2.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                 textPropertyName.Text = textPropertyName2.Text = txtProperty.Text;
                 textPrice.Text = txtPrice.Text;
                 textFrom.Text = txtPaymentDate.Text;
@@ -101,9 +97,7 @@ namespace PropertyManagementSystem.Forms
                 var rpt = new rptCashClaim();
                 var textDate = (TextObject)rpt.ReportDefinition.ReportObjects["textDate"];
                 var textClient = (TextObject)rpt.ReportDefinition.ReportObjects["textClient"];
-                var textPropertyType = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyType"];
                 var textPropertyName = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyName"];
-                var textPropertyType2 = (TextObject)rpt.ReportDefinition.ReportObjects["textPropertyType2"];
                 var textPropertyName2 = (TextObject)rpt.ReportDefinition.ReportObjects["textProperty2"];
                 var textPrice = (TextObject)rpt.ReportDefinition.ReportObjects["textPrice"];
                 var textFrom = (TextObject)rpt.ReportDefinition.ReportObjects["textFrom"];
@@ -111,8 +105,6 @@ namespace PropertyManagementSystem.Forms
 
                 textDate.Text = DateTime.Now.ToShortDateString();
                 textClient.Text = txtClient.Text;
-                textPropertyType.Text =
-                    textPropertyType2.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                 textPropertyName.Text = textPropertyName2.Text = txtProperty.Text;
                 textPrice.Text = txtPrice.Text;
                 textFrom.Text = txtPaymentDate.Text;
