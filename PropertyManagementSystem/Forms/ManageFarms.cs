@@ -437,10 +437,8 @@ namespace PropertyManagementSystem.Forms
                 if (availableScanner != null)
                 {
                     var device = availableScanner.Connect(); //Connect to the available scanner.
-                    var scanerItem = device.Items[1]; // select the scanner.
-                    var imgFile =
-                        (ImageFile)scanerItem.Transfer(FormatID
-                            .wiaFormatJPEG); //Retrieve an image in Jpg format and store it into a variable.
+                    var scannerItem = device.Items[1]; // select the scanner.
+                    var imgFile = (ImageFile) scannerItem.Transfer(FormatID.wiaFormatJPEG); //Retrieve an image in Jpg format and store it into a variable.
                     var imageBytes = (byte[])imgFile.FileData.get_BinaryData();
                     var ms = new MemoryStream(imageBytes);
                     var imgVar = Image.FromStream(ms);
@@ -475,9 +473,9 @@ namespace PropertyManagementSystem.Forms
                 if (availableScanner != null)
                 {
                     var device = availableScanner.Connect(); //Connect to the available scanner.
-                    var scanerItem = device.Items[1]; // select the scanner.
+                    var scannerItem = device.Items[1]; // select the scanner.
                     var imgFile =
-                        (ImageFile)scanerItem.Transfer(FormatID
+                        (ImageFile)scannerItem.Transfer(FormatID
                             .wiaFormatJPEG); //Retrieve an image in Jpg format and store it into a variable.
                     var imageBytes = (byte[])imgFile.FileData.get_BinaryData();
                     var ms = new MemoryStream(imageBytes);

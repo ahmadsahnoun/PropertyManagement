@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\..\Downloads\Bunifu_UI_v1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -50,10 +50,6 @@
     </Reference>
     <Reference Include="FlatButton">
       <HintPath>..\..\..\..\..\Downloads\JControls\FlatButton.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.WIA">
-      <HintPath>..\..\..\..\..\Downloads\SHAREit\iPhone 7\file\SimpleScanningApp-1\SimpleScanningApp\SimpleScanningApp\bin\Debug\Interop.WIA.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="JDragControl">
       <HintPath>..\..\..\..\..\Downloads\JControls\JDragControl.dll</HintPath>
@@ -383,9 +379,19 @@
   <ItemGroup>
     <None Include="NewIcons\Resident1.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
